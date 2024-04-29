@@ -1,0 +1,35 @@
+<div class="card card-productos">
+  <div class="card-content">
+    <h3><%= product.nombre %></h3>
+    <p><%= product.descripcion %></p>
+    <p>$<%= product.precio %></p>
+
+    <form action="/carrito/<%= product.id %>" method="POST">
+      <div class="container-add-card">
+        <div class="container-quantity">
+          <input
+            type="number"
+            placeholder="1"
+            value="1"
+            min="1"
+            class="input-quantity"
+            name="cantidad"
+          />
+        </div>
+
+        <div class="btn-increment-decrement">
+          <i class="fa-solid fa-chevron-up" id="increment"></i>
+          <i class="fa-solid fa-chevron-down" id="decrement"></i>
+        </div>
+
+        <div>
+          <button type="submit" class="btn-add-too-cart">Agregar</button>
+
+          <a href="/productos/<%= product.id %>/edit" class="btn-detail-edit"
+            >Editar</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

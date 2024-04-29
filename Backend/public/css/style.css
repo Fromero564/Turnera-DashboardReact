@@ -1,0 +1,535 @@
+header{
+     height: 100px;
+    width: 100px;
+    background-color: green;
+
+}
+
+
+/*Body Index */
+.body-index {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    font-family: montserrat,sans-serif;
+}
+
+.body-index form{
+    text-align: center;
+}
+.body-index input{
+    width: 75px;
+    padding: 3px;
+    margin: 10px;
+}
+.body-index h1{
+    color: white;
+    font-family: montserrat,sans-serif;
+
+}
+.body-index h3{
+    color: white;
+}
+.columna {
+    flex: 1;
+    padding: 20px;
+    border: 3px solid green;
+    
+}
+
+/*Seccion carga de producto*/
+.seccion-carga {
+    background-color: black;
+}
+
+.seccion-carga h1{
+   padding: 25px;
+   text-align: center;
+}
+
+/*Seccion Card*/
+.productos-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    margin: -10px; 
+    margin-bottom: 25px;
+    margin-top: 30px;;
+}
+
+
+.card {
+    width: calc(33.33% - 20px);
+    border: 1px solid white;
+    margin: 10px;
+   
+    box-sizing: border-box;
+   
+}
+
+/*Seccion pedidos*/
+.pedidos-container {
+ 
+    display: flex;
+    flex-wrap: wrap;
+    font-family: montserrat,sans-serif;
+    margin: -10px; 
+    
+}
+
+/*Seccion retiros*/
+.retiros-container {
+   
+    display: flex;
+    flex-wrap: wrap;
+     font-family: montserrat,sans-serif;
+    justify-content: space-between; 
+    margin: -10px; 
+}
+
+
+.tabla h4 {
+    background-color: blue;
+}
+
+.total-compra h3{
+    color: white;
+    font-family: montserrat,sans-serif;
+}
+
+
+
+.card-content-retiro{
+    background-color: black;
+}
+
+.card-retiro{
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+.card-content-pedido {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Establece la altura al 100% para alinear al final */
+}
+
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Alinea los botones a la derecha */
+}
+.card-productos{
+    color: white;
+    text-align: center;
+    padding: 6px;
+}
+
+.cargar-pedido button {
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s; 
+  
+}
+
+.cargar-pedido button:hover {
+    border: 2px solid black; 
+}
+
+.tabla-pedido th {
+
+padding: 6px;
+
+}
+
+.tabla-pedido td {
+padding-bottom: 7px;
+padding-top: 7px;
+text-align: center;
+
+}
+
+/*menu*/
+
+.menu {
+  background-color: green; 
+  height: 70px; 
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; 
+  position: fixed; 
+  top: 0;
+  z-index: 100; 
+
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu li {
+  margin-right: 20px; 
+}
+
+.menu a {
+  text-decoration: none;
+  color: white; 
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+.menu a:hover {
+  border-bottom: 2px solid white; 
+}
+
+
+.body-index {
+  margin-top: 50px; 
+}
+
+/* Estilo para el botón "Inicio" en estado normal */
+.menu-link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: 2px solid transparent; 
+  padding: 5px 10px;
+  transition: border-color 0.3s; 
+  border-radius: 20px;
+}
+
+/* Estilo para el botón "Inicio" en hover */
+.menu-link:hover {
+  border-color: white; 
+}
+
+.boton-pedido button {
+    color: white;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 23px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s; 
+  
+}
+
+.boton-pedido button:hover {
+    border: 2px solid black; 
+}
+
+.p-carga{
+
+    text-align: center;
+
+}
+
+
+.total{
+   background-color: green;
+ height: 40px;
+ text-align: center;
+ padding: 10px;
+}
+
+.card-productos button {
+    color: white;
+    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s; 
+  
+}
+
+.card-productos button:hover {
+    border: 2px solid black; 
+}
+
+.card-productos a {
+    color: white;
+    padding: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s; 
+    text-decoration: none;
+    bottom: 0;
+  
+}
+
+.card-productos a:hover {
+    border: 2px solid black; 
+}
+
+.crear-productos form{
+    padding: 30px;
+  margin: 30px;
+  text-align: center;
+}
+
+.crear-productos label{
+    color: white;
+   
+}
+
+.crear-productos button {
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s;
+  
+}
+
+.crear-productos button:hover {
+    border: 2px solid black; 
+}
+
+.crear-productos p{
+   background-color: azure;
+}
+
+.crear-productos input{
+    width: 150px;
+    height: 50px;
+}
+
+  .card-pedido {
+    color: white; 
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 10px;
+  }
+
+
+
+  /* Estilos para los botones con hover y bordes blancos */
+  .card-pedido button {
+       color: white;
+    padding: 4px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s;
+   
+  }
+
+  .card-pedido button:hover {
+      border: 2px solid black; 
+  }
+
+  .card-pedido h3{
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  .columna h1{
+    text-align: center;
+    padding: 20px;
+  }
+
+  .card-retiro button {
+       color: white;
+    padding: 4px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s;
+   
+  }
+
+  .card-retiro button:hover {
+      border: 2px solid black; 
+  }
+
+  .boton-eliminar-carrito button {
+       color: white;
+    padding: 4px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s;
+   
+  }
+
+  .boton-eliminar-carrito button:hover {
+      border: 2px solid black; 
+  }
+
+  .menu img{
+    width: 160px;
+  }
+
+
+    .cargar-pedido button {
+       color: white;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: black;
+    border: 2px solid white;
+    transition: border 0.3s;
+    font-size: 20px;
+   
+  }
+
+  .cargar-pedido button:hover {
+      border: 2px solid black; 
+  }
+
+  .numero-pedido p{
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 25px;
+
+  }
+
+  /*BOTON BUSQUEDAS*/
+
+ .boton-buscador {
+ 
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: black;
+  border: 2px solid white;
+  transition: border 0.3s;
+  font-weight: bold;
+}
+
+.boton-buscador:hover {
+ 
+  border: 2px solid black;
+}
+
+.input-busqueda {
+  width: 300px;
+  padding: 8px;
+  border: 3px solid green;
+  border-radius: 6px 6px;
+  outline: none; 
+ 
+}
+
+.comentamos{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input-busqueda.comenta{
+  width: 350px;
+}
+
+.input-select{
+   width: 150px;
+  padding: 8px;
+  border: 3px solid green;
+  border-radius: 6px 6px;
+  outline: none; 
+}
+
+.input-select option {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+  }
+
+
+.form-edit{
+  margin-top: 50px;
+  text-align: center;
+}
+ .edit{
+   
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: black;
+  border: 2px solid white;
+  transition: border 0.3s;
+  font-weight: bold;
+}
+
+.edit:hover {
+ 
+  border: 2px solid black;
+}
+
+.form-label {
+  color: white;
+  font-weight: bold;
+  margin-left: 15px;
+
+}
+
+.form-input {
+  color: black;
+  font-weight: bold;
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 30px;
+  margin: 15px;
+  width: 100%; 
+  box-sizing: border-box;
+  margin-bottom: 20px; 
+}
+
+
+textarea.form-input {
+  resize: horizontal;
+}
+
+
+.col-12 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.col-12 .form-input {
+  width: calc(100% - 10px);
+  margin-bottom: 10px;
+}
+
+.comentarios-css{
+
+  margin: 35px;
+}

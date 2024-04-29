@@ -1,0 +1,63 @@
+{
+  "name": "cervesia",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JnOlivera/cervesia.git"
+  },
+  "keywords": [],
+  "author": "Feviertech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JnOlivera/cervesia/issues"
+  },
+  "homepage": "./",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "excel4node": "^1.8.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
+    "fs": "^0.0.1-security",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mysql2": "^3.6.1",
+    "nodemon": "^3.0.1",
+    "pdfkit": "^0.14.0",
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1",
+    "sqlite3": "5.1.6",
+    "use-sound": "^4.0.1"
+  },
+  "description": "Turnera con Pantalla",
+  "devDependencies": {
+    "electron": "^28.2.2",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.ejemplo.miaplicacion",
+    "productName": "Cerversia-Turnera",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icono.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icono.icns"
+    },
+    "linux": {
+      "target": "deb",
+      "icon": "icono.png"
+    }
+  }
+}

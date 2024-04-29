@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <!--CSS PROPIO-->
+     <link href="/css/normalize.css" rel="stylesheet" />
+     <link href="/css/style.css" rel="stylesheet" />
+ 
+     
+    <title>Principal</title>
+  </head>
+
+  <body class="body-index">
+
+<!--NAVBAR-->   
+    <nav class="menu">
+   
+      <ul>
+       <li><a href="#" class="menu-link">Inicio</a></li>
+       <li><a href="/productos" class="menu-link">Crear Producto</a></li>
+       <li><a href="/pedidospdf" class="menu-link">Descargar PDF datos</a></li>
+       <li><a href="/pedidosexcel" class="menu-link">Descargar Excel datos</a></li>
+       <li><a href="#" class="menu-link" id="resetDatabaseButton">Resetear Base de datos</a></li>
+
+       <script>
+         document.getElementById('resetDatabaseButton').addEventListener('click', function () {
+           const confirmReset = window.confirm('¿Estás seguro de que deseas resetear la base de datos?');
+       
+           if (confirmReset) {
+             fetch('/reset-database', { method: 'POST' })
+               .then(response => response.text())
+               .then(message => console.log(message))
+               .catch(error => console.error('Error al resetear la base de datos:', error));
+           } else {
+             console.log('Reset de base de datos cancelado por el usuario.');
+           }
+         });
+       </script>
+       </ul>
+             <img src="/logoCervesia1.png" alt="Descripción de la imagen">
+    </nav>
+
+ 
+  </body>
+
+  <!--CREACION DE USUARIO-->
+    <section class="columna seccion-carga">
+ 
+    <form action="/usuario" method="post" class="boton-pedido">
+      <button>NUEVO PEDIDO</button>
+    </form>
+    <div class="numero-pedido">
+      <% if (user && user.id) { %>
+   
+        <p>NUMERO DE PEDIDO: <%= user.id %></p>
+      <% } else { %>
+        <p>No hay cliente.</p>
+      <% } %>
+    </div>
+    <div>
+        <!--BARRA DE BUSQUEDA-->
+    <h3 class="p-carga">Barra de búsqueda:</h3>
+    <form action="/" method="post">
+      <input type="text" name="busqueda" id="busqueda" style="width: 300px;" class="input-busqueda">
+      <button type="submit" class="boton-buscador">Buscar</button>
+    </form>
+  </div>
+      <!--RESULTADOS DE BUSQUEDA-->
+     <div class="productos-container">
+    
+      <% resultados.forEach(resultado => { %> 
+        
+        <%-
+      include("./partials/busquedaCard",{resultado}) %>
+       
+       <% }) %>
+    
+    </div>
+        <!--PRODUCTOS DISPONIBLES-->
+     <h3 class="p-carga">Productos para cargar:</h3>
+
+       <!--LISTADO DE PRODUCTOS DISPONIBLES-->
+    <div class="productos-container">
+      
+     
+      <% productos.forEach(product => { %> 
+        
+        <%-
+      include("./partials/productCard",{product}) %>
+       
+       <% }) %>
+    </div>
+     <!-- FORMULARIO DE COMENTARIOS/MEDIO DE PAGOS -->
+<div class="">
+  <h3 class="comentamos">Comentario/Medio de pago:</h3>
+  <% if (user && user.id) { %>
+    <form action="/comentario" method="post">
+      <input type="hidden" name="userid_comentario" value="<%= user.id %>">
+      <input type="text" name="comentario" placeholder="Comentario" class="input-busqueda comenta">
+      <select name="selectMedioPago" class="input-select">
+        <option value="Efectivo" selected>Efectivo</option>
+        <option value="TarjetaDebito">Tarjeta de Débito</option>
+        <option value="TarjetaCredito">Tarjeta de Crédito</option>
+        <option value="Transferencia">Transferencia</option>
+        <option value="Otro">Otro</option>
+      </select>
+      <button type="submit" class="boton-buscador">Agregar</button>
+    </form>
+  <% } else { %>
+    <p>No se puede cargar comentarios/medios de pago, no hay un usuario válido.</p>
+  <% } %>
+
+  <div class="comentarios-css">
+    <% metodoPagoComentarios.forEach(metodoPagoComentario => { %>
+      <% if (metodoPagoComentario) { %>
+        <% if (metodoPagoComentario.comentario) { %>
+          <p style="width: 500px; color: white;margin-bottom: 12px;">Comentario: <%= metodoPagoComentario.comentario %></p>
+        <% } %>
+        <% if (metodoPagoComentario.medio_de_pago) { %>
+          <p style="width: 500px; color: white;">Metodo de Pago: <%= metodoPagoComentario.medio_de_pago %></p>
+        <% } %>
+      <% } %>
+    <% }) %>
+  </div>
+</div>
+
+      <!--TABLA DE PEDIDOS DISPONIBLES-->
+    <section class="tabla-pedido">
+      <table class="tabla" style="border: 1px black">
+        <tr style="border: 1px solid black">
+          <th style="width: 00px; font-weight: bold; color: white; border: 1px solid white">
+           Producto 
+          </th>
+          <th style="width: 00px; font-weight: bold; color: white; border: 1px solid white">Cantidad</th>
+          <th style="width: 00px; font-weight: bold; color: white; border: 1px solid white">Precio Unitario</th>
+          <th style="width: 00px; font-weight: bold; color: white;border: 1px solid white">Precio Total</th>
+          <th style="width: 00px; font-weight: bold; color: white;border: 1px solid white">Modificar Cantidad</th>
+          <th style="width: 00px; font-weight: bold; color: white;border: 1px solid white">Eliminar</th>
+        </tr>
+
+        <% productosAgregados.forEach(producto => { %>
+        <tr style="border: 1px solid black; color: white">
+          <td style="width: 100px; color: white; margin-left: 10px">
+            <%= producto.Producto.nombre %>
+          </td>
+          <td style="width: 100px"><%= producto.cantidad %></td>
+          <td style="width: 100px">$<%= producto.Producto.precio %></td>
+          <td style="width: 100px">
+            $<%= producto.Producto.precio * producto.cantidad%>
+          </td>
+
+          <td>
+            <article class="boton-eliminar-carrito">
+              <form
+                action="/carrito/<%= producto.id %>?_method=put"
+                method="POST"
+                style="display: inline-flex"
+              >
+                <input
+                  type="number"
+                  id="cantidad"
+                  name="cantidad"
+                  value="<%=producto.cantidad %>"
+                  min="0"
+                  onchange="mostrarAlertaCambios()"
+                />
+                <button
+                  type="submit"
+                  class="boton-eliminar-carrito boton-registro"
+                   onclick="ocultarAlertaCambios()"
+                >
+                  Modificar
+                </button>
+              </form>
+            <script class="alert-modificar">
+    function mostrarAlertaCambios() {
+      alert("Recuerda que debes hacer clic en el botón 'Modificar' después de cambiar la cantidad.");
+
+     
+      document.addEventListener('click', ocultarAlertaCambios, { once: true });
+    }
+
+    function ocultarAlertaCambios() {
+    
+    }
+  </script>
+            </article>
+          </td>
+          <td>
+            <article class="contenedor-boton-eliminar boton-eliminar-carrito">
+              <form
+                action="<%= producto.productos_id %>?_method=delete"
+                method="POST"
+                style="display: inline-flex"
+              >
+                <button
+                  type="submit"
+                  class="boton-eliminar-carrito boton-registro"
+                >
+                  Eliminar
+                </button>
+              </form>
+            </article>
+          </td>
+        </tr>
+        <% }) %>
+      </table>
+   
+
+      <div class="total-compra">
+        <% let total = productosAgregados.reduce((suma, producto) => suma +
+        (producto.Producto.precio * producto.cantidad), 0) %>
+        <h3 class="total">Total de su compra: $<%= total.toFixed(2) %></h3>
+      </div>
+
+    </section>
+      <% if (user && user.id) { %>
+        <form action="/pedido/" method="post" class="cargar-pedido">
+          <input type="hidden" name="user_id" value="<%= user.id %>">
+          <button>Cargar Pedido</button>
+        </form>
+      <% } else { %>
+        <p>No se puede cargar el pedido, no hay un usuario válido.</p>
+      <% } %>
+    
+   
+
+</section>
+
+
+
+  <!--PRODUCTOS EN PREPARACION-->
+<section class="columna">
+   <h1>EN PREPARACION</h1>
+
+           <!--BARRA DE BUSQUEDA-->
+    <h3 class="p-carga">Barra de búsqueda:</h3>
+    <form action="/" method="post">
+      <input type="text" name="buscados" id="buscados" style="width: 300px;" class="input-busqueda">
+      <button type="submit" class="boton-buscador">Buscar</button>
+    </form>
+  </div>
+      <!--RESULTADOS DE BUSQUEDA-->
+     <div class="productos-container">
+    
+      <% buscar.forEach(buscare => { %> 
+        
+        <%-
+      include("./partials/buscarCard",{buscare}) %>
+       
+       <% }) %>
+    
+    </div>
+
+
+   <div class="pedidos-container">
+      
+     
+    <% pedidos.forEach(pedido => { %> 
+      
+      <%-
+    include("./partials/pedidoCard",{pedido}) %>
+     
+     <% }) %>
+  </div>
+
+</section>
+  <!--PRODUCTOS PARA RETIRAR-->
+<section class="columna">
+   <h1>LISTO PARA RETIRAR</h1>
+   <div class="retiros-container">
+      
+     
+    <% retiros.forEach(retiro => { %> 
+      
+      <%-
+    include("./partials/retiroCard",{retiro}) %>
+     
+     <% }) %>
+  </div>
+
+
+   </div>
+
+</section>
+</body>
+
+</html>

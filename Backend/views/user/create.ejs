@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--CSS PROPIO-->
+    <link href="/css/normalize.css" rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+
+    <title>Principal</title>
+  </head>
+  <body class="body-index crear-productos">
+    <nav class="menu">
+      <ul>
+        <li><a href="/" class="menu-link">Inicio</a></li>
+        <li><a href="/productos" class="menu-link">Crear Producto</a></li>
+        <li><a href="/pedidospdf" class="menu-link">Descargar PDF datos</a></li>
+        <li><a href="/pedidosexcel" class="menu-link">Descargar Excel datos</a></li>
+        <li>
+          <a href="#" class="menu-link" id="resetDatabaseButton"
+            >Resetear base de datos</a
+          >
+        </li>
+
+        <script>
+          document
+            .getElementById("resetDatabaseButton")
+            .addEventListener("click", function () {
+              const confirmReset = window.confirm(
+                "¿Estás seguro de que deseas resetear la base de datos?"
+              );
+
+              if (confirmReset) {
+                fetch("/reset-database", { method: "POST" })
+                  .then((response) => response.text())
+                  .then((message) => console.log(message))
+                  .catch((error) =>
+                    console.error("Error al resetear la base de datos:", error)
+                  );
+              } else {
+                console.log("Reset de base de datos cancelado por el usuario.");
+              }
+            });
+        </script>
+      </ul>
+      <img src="/logoCervesia1.png" alt="Descripción de la imagen" />
+    </nav>
+  </body>
+  <body class="crear-productos">
+    <form action="/productos" method="post">
+      <br /><br />
+      <label>Nombre:</label>
+      <input type="text" id="name" name="name" maxlength="255" />
+      <label>Precio:</label>
+      <input type="text" id="price" name="price" maxlength="255" />
+      <label>Descripcion:</label>
+      <textarea id="description" name="description"></textarea>
+
+      <button type="submit">Agregar</button>
+    </form>
+  </body>
+</html>
